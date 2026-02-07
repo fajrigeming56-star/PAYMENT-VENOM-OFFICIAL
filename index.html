@@ -3,325 +3,180 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PAYMENT VENOM OFFICIAL</title>
+  <title>REYYAN PAYMENT</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-    * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom, #2a0000, #000);
+      padding: 30px 15px;
       font-family: 'Share Tech Mono', monospace;
+      background: #000;
+      color: #00ff99;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      overflow-x: hidden;
+      background-image: linear-gradient(to bottom, #000000, #001a00);
+      animation: matrixScroll 30s linear infinite;
     }
 
-    .wrapper {
-      width: 100%;
-      max-width: 420px;
-      padding: 20px;
-      text-align: center;
-      color: #ff3c00;
-    }
-
-    .hidden { display: none; }
-    .fade-in { animation: fadeIn 0.4s forwards; }
-    .fade-out { animation: fadeOut 0.4s forwards; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeOut {
-      from { opacity: 1; transform: translateY(0); }
-      to   { opacity: 0; transform: translateY(-20px); }
+    @keyframes matrixScroll {
+      from { background-position: 0 0; }
+      to { background-position: 0 1000px; }
     }
 
     h1 {
-      font-size: 1.8em;
-      margin: 15px 0;
-      animation: typing 2s steps(25, end), blink-caret 0.75s step-end 3, hide-caret 0.3s ease 2s forwards;
-      border-right: 2px solid rgba(255,255,255,0.75);
-      white-space: nowrap;
-      overflow: hidden;
-      width: fit-content;
-      max-width: 100%;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-
-    @keyframes blink-caret {
-      from, to { border-color: transparent; }
-      50% { border-color: rgba(255,255,255,0.75); }
-    }
-
-    @keyframes hide-caret {
-      to { border-right: 0px solid transparent; }
+      color: #00ffcc;
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 10px;
     }
 
     .thumbnail {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      box-shadow: 0 0 25px #ff3c00;
-      margin: 0 auto 20px auto;
-      display: block;
-    }
-
-    .button, .back-btn, .qr-download-btn {
-      background-color: #ff3c00;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-weight: bold;
-      box-shadow: 0 0 10px #ff3c00;
-      cursor: pointer;
-      margin-top: 15px;
-      transition: transform 0.3s ease;
-    }
-
-    .button:hover, .back-btn:hover, .qr-download-btn:hover {
-      transform: scale(1.05);
-    }
-
-    .back-btn { margin-top: 30px; }
-
-    .payment-info {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease;
-    }
-
-    .payment-info.show {
-      max-height: 1000px;
-    }
-
-    .copy-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 20px;
-      gap: 20px;
-    }
-
-    .dana-box {
-      background: rgba(42, 0, 0, 0.8);
-      color: #ff3c00;
-      padding: 10px 20px;
-      border: 2px solid #ff3c00;
-      border-radius: 20px;
-      font-size: 1.1em;
-      font-weight: bold;
-      box-shadow: 0 0 20px #ff3c00;
-      text-align: center;
-      width: 100%;
-    }
-
-    .copy-button, .confirm-button {
-      background-color: #ff3c00;
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-weight: bold;
-      box-shadow: 0 0 10px #ff3c00;
-      cursor: pointer;
-    }
-
-    .copied-msg {
-      background-color: #000; /* Warna latar hitam */
-      padding: 10px 15px;
-      border-radius: 8px;
-      color: white;
-      font-weight: bold;
-      animation: popin 0.3s ease forwards;
-      text-align: center;
-      border-left: 6px solid #ff3c00; /* Garis kiri merah menyala */
-    }
-
-    @keyframes popin {
-      from { transform: scale(0); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    @keyframes popout {
-      from { transform: scale(1); opacity: 1; }
-      to { transform: scale(0); opacity: 0; }
-    }
-
-    .qris-box {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 20px;
-      gap: 20px;
-    }
-
-    .qris-container-wrapper {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-    }
-
-    .qris-container {
-      padding: 6px;
-      border: 2px solid #ff3c00;
-      border-radius: 12px;
-      box-shadow: 0 0 12px #ff3c00;
-      transition: all 0.4s ease;
-      cursor: pointer;
-      display: inline-block;
-    }
-
-    .qris-container.expanded {
-      transform: scale(1.5);
-    }
-
-    .qris-img {
-      display: block;
       width: 160px;
       height: 160px;
       border-radius: 12px;
+      box-shadow: 0 0 20px #00ff99;
+      margin: 20px 0;
     }
 
-    .qr-download-btn {
+    .section {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 350px;
+      margin-bottom: 40px;
+    }
+
+    .product-card {
+      background: rgba(0, 30, 0, 0.6);
+      border: 1px solid #00ff99;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 0 15px #004d26;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .product-card:hover {
+      background: rgba(0, 50, 0, 0.7);
+      transform: scale(1.03);
+    }
+
+    .product-title {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #00ffcc;
+    }
+
+    .price {
+      font-size: 0.95em;
+      margin: 6px 0;
+      color: #66ffcc;
+    }
+
+    .product-detail {
       display: none;
-      margin-top: 40px;
+      margin-top: 8px;
+      font-size: 0.85em;
+      color: #99ffcc;
+      white-space: pre-line;
     }
 
-    .qr-hint {
-      margin-top: 10px;
-      color: #aaa;
+    button {
+      background-color: #00ff99;
+      color: black;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-family: inherit;
+      box-shadow: 0 0 10px #00ff99;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    hr {
+      width: 80%;
+      border: none;
+      height: 1px;
+      background-color: #004400;
+      margin: 30px 0;
+    }
+
+    .note {
+      color: #ccc;
       font-size: 0.9em;
       text-align: center;
     }
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <!-- HALAMAN UTAMA -->
-    <div id="homePage">
-      <img src="https://files.catbox.moe/cpyf17.jpeg" alt="Logo" class="thumbnail" />
-      <h1>Selamat Datang</h1>
-      <button class="button" onclick="goToPayment()">PAYMENT</button>
-    </div>
 
-    <!-- HALAMAN PAYMENT -->
-    <div id="paymentPage" class="hidden">
-      <img src="https://files.catbox.moe/gnivgg.jpg" alt="Logo" class="thumbnail" />
-      <h1>PAYMENT VENOM</h1>
-      <button class="button" onclick="togglePaymentInfo()">ALL PAYMENT</button>
+  <h1>Reyyan Payment</h1>
+  <img src="https://img1.pixhost.to/images/5387/593501007_skyzopedia.jpg" class="thumbnail" />
 
-      <div class="payment-info" id="paymentInfo">
-        <div class="copy-section">
-          <div class="qris-box">
-            <div class="qris-container-wrapper">
-              <div class="qris-container" id="qrisContainer">
-                <img src="https://files.catbox.moe/cpyf17.jpeg" alt="QRIS" class="qris-img" id="qrisImage" />
-              </div>
-            </div>
-            <button class="qr-download-btn" id="qrDownloadBtn" onclick="downloadQR()">Download QR</button>
-            <small class="qr-hint">📌 Tekan lama gambar jika ingin simpan ke galeri</small>
-          </div>
+  <!-- QRIS & DUKUNGAN -->
+  <div class="section">
+    <button onclick="window.open('https://files.catbox.moe/cqaq9z.jpg', '_blank')">QRIS</button>
+    <button onclick="event.preventDefault()">DANA: 081958230526</button>
+    <button onclick="event.preventDefault()">GOPAY: GAK ADA</button>
+  </div>
+  <div class="note">Atas Nama: <strong>SUMERIA</strong></div>
 
-          <div class="dana-box">DANA: <span id="danaNumber">085823888277</span></div>
-          <button class="copy-button" onclick="copyDana()">Salin Nomor</button>
+  <hr />
 
-          <div id="copiedMessage" style="display:none;" class="copied-msg">
-            ✅ Nomor DANA disalin
-            <button class="confirm-button" onclick="hideCopiedMessage()">OKE</button>
-          </div>
-        </div>
+  <!-- Produk Section -->
+  <div class="section">
+
+    <div class="product-card" onclick="toggleDetail(this)">
+      <div class="product-title">Murunband Reyyan</div>
+      <div class="price">Mulai Rp50.000</div>
+      <div class="product-detail">
+Benefit:
+- Lu bisa open unband
+- dapat teks unband spam
+- dapat teks unband perma
+- full tutor
       </div>
-
-      <button class="back-btn" onclick="backToHome()">⬅ BACK</button>
     </div>
+
+    <div class="product-card" onclick="toggleDetail(this)">
+      <div class="product-title">murnokos Reyyan</div>
+      <div class="price">Rp5.000</div>
+      <div class="product-detail">
+Benefit:
+- Dapatkan web nokos murah
+- Dapatkan bot gaca nokos free
+- lu bisa jual nokos luar/indo
+- full tutor
+      </div>
+    </div>
+
+    <div class="product-card" onclick="toggleDetail(this)">
+      <div class="product-title">nokos indo</div>
+      <div class="price">Rp5.000</div>
+      <div class="product-detail">
+      </div>
+    </div>
+    
+      </div>
+    </div>
+
   </div>
 
   <script>
-    const qris = document.getElementById('qrisContainer');
-    const qrBtn = document.getElementById('qrDownloadBtn');
-    const qrisImage = document.getElementById('qrisImage');
-
-    qris.addEventListener('click', () => {
-      qris.classList.toggle('expanded');
-      qrBtn.style.display = qris.classList.contains('expanded') ? 'inline-block' : 'none';
-    });
-
-    function downloadQR() {
-      const link = document.createElement('a');
-      link.href = qrisImage.src;
-      link.download = 'qris-dixey.png';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      alert("✅ QRIS berhasil diunduh.\nCek folder 'Download' HP kamu.");
-    }
-
-    function togglePaymentInfo() {
-      document.getElementById('paymentInfo').classList.toggle('show');
-    }
-
-    function copyDana() {
-      const danaText = document.getElementById('danaNumber').innerText;
-      const textarea = document.createElement('textarea');
-      textarea.value = danaText;
-      document.body.appendChild(textarea);
-      textarea.select();
-      try {
-        document.execCommand('copy');
-        document.getElementById('copiedMessage').style.display = 'block';
-      } catch (err) {
-        alert('Gagal menyalin nomor');
-      }
-      document.body.removeChild(textarea);
-    }
-
-    function hideCopiedMessage() {
-      const msg = document.getElementById('copiedMessage');
-      msg.style.animation = 'popout 0.3s ease forwards';
-      setTimeout(() => {
-        msg.style.display = 'none';
-        msg.style.animation = '';
-      }, 300);
-    }
-
-    function goToPayment() {
-      const home = document.getElementById("homePage");
-      const payment = document.getElementById("paymentPage");
-      home.classList.add("fade-out");
-      setTimeout(() => {
-        home.classList.add("hidden");
-        home.classList.remove("fade-out");
-        payment.classList.remove("hidden");
-        payment.classList.add("fade-in");
-        setTimeout(() => payment.classList.remove("fade-in"), 500);
-      }, 400);
-    }
-
-    function backToHome() {
-      const home = document.getElementById("homePage");
-      const payment = document.getElementById("paymentPage");
-      payment.classList.add("fade-out");
-      setTimeout(() => {
-        payment.classList.add("hidden");
-        payment.classList.remove("fade-out");
-        home.classList.remove("hidden");
-        home.classList.add("fade-in");
-        setTimeout(() => home.classList.remove("fade-in"), 500);
-      }, 400);
+    function toggleDetail(card) {
+      const detail = card.querySelector('.product-detail');
+      detail.style.display = detail.style.display === 'block' ? 'none' : 'block';
     }
   </script>
+
 </body>
 </html>
